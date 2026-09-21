@@ -5,9 +5,13 @@ function App() {
   const [runId, setRunId] = useState(null);
   const [events, setEvents] = useState([]);
 
+  const backendUrl = "https://resumable-conversation.onrender.com" ;
+
   const startRun = async () => {
-    const response = await fetch('http://your-backend.onrender.com/api/start', {
-      method: 'POST'
+    const response = await fetch(`${backendUrl}/start-run`, {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: "Hello AI" })
     });
     const data = await response.json();
     setRunId(data.runId);
@@ -15,8 +19,7 @@ function App() {
   };
 
   const fetchEvents = async () => {
-    const response = await fetch("https://your-backend.onrender.com/api/...")
-;
+    const response = await fetch(`${backendUrl}/events?runId=${runId}`);
     const data = await response.json();
     setEvents(data.events);
   };
@@ -26,11 +29,11 @@ function App() {
       <h1 className="title">✨ Resumable Conversation Demo ✨</h1>
       <div className="button-group">
         <button className="btn start" onClick={startRun}>Start Run</button>
-        <button className="btn fetch" onClick={fetchEvents}>Fetch Events</button>
+        <button className="btn fetch" onClick={fetchEvents} disabled={!runId}>Fetch Events</button>
       </div>
       <div className="events-container">
         {events.map((event, index) => (
-          <p key={index} className="event fade-in">{event}</p>
+          <p key={index} className="event fade-in">{event.content}</p>
         ))}
       </div>
     </div>
