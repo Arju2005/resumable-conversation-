@@ -6,7 +6,7 @@ function App() {
   const [events, setEvents] = useState([]);
 
   const startRun = async () => {
-    const response = await fetch('http://localhost:4000/api/start', {
+    const response = await fetch('http://your-backend.onrender.com/api/start', {
       method: 'POST'
     });
     const data = await response.json();
@@ -15,7 +15,8 @@ function App() {
   };
 
   const fetchEvents = async () => {
-    const response = await fetch('http://localhost:4000/api/events');
+    const response = await fetch("https://your-backend.onrender.com/api/...")
+;
     const data = await response.json();
     setEvents(data.events);
   };
