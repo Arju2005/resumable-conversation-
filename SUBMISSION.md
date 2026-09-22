@@ -1,5 +1,10 @@
     # Caygnus Product Engineering Challenge Submission
 
+Name:Arju Chakraborty
+Email:chakrabortyarju@gmail.com
+GitHub:https://github.com/Arju2005
+Selected problem:Resumable Realtime Conversation
+
 ## Demo Video
 [https://www.loom.com/share/60d0649164a3446c9d895a020dc3f0db]
 
